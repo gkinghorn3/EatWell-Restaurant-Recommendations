@@ -16,21 +16,29 @@ app.use(express.static("public"));
 // parse incoming http request bodies
 app.use(express.urlencoded({ extended: false }));
 
-
 app.get("/", function (req, res) {
   res.render("index");
 });
 
 app.get("/restaurants", function (req, res) {
-  res.render("restaurants", { numberOfRestaurants: 2 });
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+
+  // read the file data
+  const fileData = fs.readFileSync(filePath);
+  // convert data to JS object
+  const storedRestaurants = JSON.parse(fileData);
+
+  //   let numOfRestaurants = Object.keys(storedRestaurants).length;
+
+  res.render("restaurants", { numberOfRestaurants: storedRestaurants.length });
 });
 
 app.get("/confirmation", function (req, res) {
-res.render('confirm')
+  res.render("confirm");
 });
 
 app.get("/recommend", function (req, res) {
-res.render('recommend');
+  res.render("recommend");
 });
 
 app.post("/recommend", function (req, res) {
@@ -52,7 +60,7 @@ app.post("/recommend", function (req, res) {
 });
 
 app.get("/about", function (req, res) {
-res.render('about');
+  res.render("about");
 });
 
 app.listen(3000);
