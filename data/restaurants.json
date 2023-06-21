@@ -1,1 +1,16 @@
-[{"name":"Chez Jules","address":"123 street","cuisine":"French","website":"https://www.website.co.uk","description":"tasty shit"},{"name":"Hawksmoor","address":"st Andrew SQ","cuisine":"Steak","website":"https://www.website.co.uk","description":"/"}]
+[
+  {
+    "name": "Chez Jules",
+    "address": "123 street",
+    "cuisine": "French",
+    "website": "https://www.website.co.uk",
+    "description": "tasty shit"
+  },
+  {
+    "name": "Hawksmoor",
+    "address": "st Andrew SQ",
+    "cuisine": "Steak",
+    "website": "https://www.website.co.uk",
+    "description": "/"
+  }
+]

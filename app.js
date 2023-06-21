@@ -4,6 +4,12 @@ const fs = require('fs');
 const express = require("express");
 const app = express();
 
+// Set up the view engine for the Express application
+// The first line specifies the directory where the view files are located
+// The second line specifies that the application will use EJS as its view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 // allows static files to be served from the defined folder
 app.use(express.static("public"));
 
