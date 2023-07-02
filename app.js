@@ -30,7 +30,10 @@ app.get("/restaurants", function (req, res) {
 
   //   let numOfRestaurants = Object.keys(storedRestaurants).length;
 
-  res.render("restaurants", { numberOfRestaurants: storedRestaurants.length });
+  res.render("restaurants", {
+    numberOfRestaurants: storedRestaurants.length,
+    restaurants: storedRestaurants,
+  });
 });
 
 app.get("/confirmation", function (req, res) {
