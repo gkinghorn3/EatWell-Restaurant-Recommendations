@@ -30,8 +30,6 @@ app.get("/restaurants", function (req, res) {
   // convert data to JS object
   const storedRestaurants = JSON.parse(fileData);
 
-  //   let numOfRestaurants = Object.keys(storedRestaurants).length;
-
   res.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
     restaurants: storedRestaurants,
@@ -51,6 +49,7 @@ app.get("/restaurants/:id", function (req, res) {
     }
   }
 
+  res.render("404");
 
 });
 
@@ -84,6 +83,16 @@ app.post("/recommend", function (req, res) {
 
 app.get("/about", function (req, res) {
   res.render("about");
+});
+
+// handle 404 errors
+app.use(function(req, res) {
+  res.render("404");
+});
+
+// handle 500 errors
+app.use(function (err, req, res, next) {
+ res.render("500");
 });
 
 app.listen(3000);
