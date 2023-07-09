@@ -4,6 +4,8 @@ const fs = require("fs");
 const express = require("express");
 const app = express();
 
+const uuid = require("uuid");
+
 // Set up the view engine for the Express application
 // The first line specifies the directory where the view files are located
 // The second line specifies that the application will use EJS as its view engine
@@ -36,6 +38,22 @@ app.get("/restaurants", function (req, res) {
   });
 });
 
+app.get("/restaurants/:id", function (req, res) {
+  const restaurantId = req.params.id;
+
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  for (const restaurant of storedRestaurants) {
+    if (restaurant.id === restaurantId) {
+      return res.render("restaurant-details", {  restaurant: restaurant });
+    }
+  }
+
+
+});
+
 app.get("/confirmation", function (req, res) {
   res.render("confirm");
 });
@@ -47,6 +65,8 @@ app.get("/recommend", function (req, res) {
 app.post("/recommend", function (req, res) {
   // get form data
   const restaurant = req.body;
+  // generate unique id and add to restaurant object
+  restaurant.id = uuid.v4();
   // define location of file that's being used
   const filePath = path.join(__dirname, "data", "restaurants.json");
 

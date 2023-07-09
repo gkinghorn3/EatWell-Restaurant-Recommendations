@@ -7,14 +7,15 @@
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "Maximilian Schwarzmüller (Academind GmbH)",
+  "author": "Grant Kinghorn",
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.9",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^3.0.1"
   },
   "nodemonConfig": {
     "ignore": [
